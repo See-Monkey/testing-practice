@@ -1,3 +1,3 @@
-# webpack project
+# testing-practice
 
-Title
+The Odin Project - TDD - Jest Testing Practice

@@ -82,3 +82,38 @@ function shiftLetter(char, shift) {
     return char;
   }
 }
+
+export function analyzeArray(array) {
+  let sum = 0;
+  let length = 0;
+  let min = null;
+  let max = null;
+
+  for (const num of array) {
+    sum += num;
+    length++;
+
+    if (min === null) {
+      min = num;
+    } else {
+      if (num < min) min = num;
+    }
+
+    if (max === null) {
+      max = num;
+    } else {
+      if (num > max) max = num;
+    }
+  }
+
+  const average = sum / length;
+
+  const outputObject = {
+    average: average,
+    min: min,
+    max: max,
+    length: length,
+  };
+
+  return outputObject;
+}
