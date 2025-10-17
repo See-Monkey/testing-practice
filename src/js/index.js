@@ -39,3 +39,5 @@ class Calculator {
   }
 }
 export const calculator = new Calculator();
+
+export function caesarCipher(input, shift) {}

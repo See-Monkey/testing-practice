@@ -1,4 +1,9 @@
-import { capitalize, reverseString, calculator } from "./index.js";
+import {
+  capitalize,
+  reverseString,
+  calculator,
+  caesarCipher,
+} from "./index.js";
 
 describe("Capitalize", () => {
   test("capitalize 1", () => {
@@ -9,7 +14,7 @@ describe("Capitalize", () => {
     expect(capitalize("2fast")).toBe("2fast");
   });
 
-  test("capitalize 3", () => {
+  test("capitalize error", () => {
     expect(() => {
       capitalize(2);
     }).toThrow(Error);
@@ -21,7 +26,7 @@ describe("Reverse String", () => {
     expect(reverseString("reverse")).toBe("esrever");
   });
 
-  test("reverse string 2", () => {
+  test("reverse string error", () => {
     expect(() => {
       reverseString(2);
     }).toThrow(Error);
@@ -43,5 +48,19 @@ describe("Calculator", () => {
 
   test("calculator divide", () => {
     expect(calculator.divide(12, 3)).toBe(4);
+  });
+});
+
+describe("Caesar Cipher", () => {
+  test("caesar wrap", () => {
+    expect(caesarCipher("xyz", 4)).toBe("bcd");
+  });
+
+  test("caesar capitalization", () => {
+    expect(caesarCipher("HeLLo", 3)).toBe("KhOOr");
+  });
+
+  test("caesar punctuation", () => {
+    expect(caesarCipher("Hello, World!", 3)).toBe("Khoor, Zruog!");
   });
 });
