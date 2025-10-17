@@ -40,4 +40,45 @@ class Calculator {
 }
 export const calculator = new Calculator();
 
-export function caesarCipher(input, shift) {}
+export function caesarCipher(input, shift) {
+  let output = "";
+  for (const char of input) {
+    output += shiftLetter(char, shift);
+  }
+  return output;
+}
+
+function shiftLetter(char, shift) {
+  const charCode = char.charCodeAt(0);
+
+  // Check if it's an uppercase letter (A-Z)
+  if (charCode >= 65 && charCode <= 90) {
+    let newCharCode = charCode + shift;
+    if (newCharCode > 90) {
+      // Wrap around from Z to A
+      newCharCode = newCharCode - 26;
+    } else if (newCharCode < 65) {
+      // Wrap around from A to Z
+      newCharCode = newCharCode + 26;
+    }
+    return String.fromCharCode(newCharCode);
+  }
+
+  // Check if it's a lowercase letter (a-z)
+  else if (charCode >= 97 && charCode <= 122) {
+    let newCharCode = charCode + shift;
+    if (newCharCode > 122) {
+      // Wrap around from z to a
+      newCharCode = newCharCode - 26;
+    } else if (newCharCode < 97) {
+      // Wrap around from a to z
+      newCharCode = newCharCode + 26;
+    }
+    return String.fromCharCode(newCharCode);
+  }
+
+  // If not a letter, return the original character
+  else {
+    return char;
+  }
+}
